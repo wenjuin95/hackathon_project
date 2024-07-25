@@ -16,18 +16,18 @@ const Header: React.FC = () => {
 
   const handleSignInClick = () => {
     setSignInClicked(true);
-    setTimeout(() => setSignInClicked(false), 300); // Reset after transition
+    setTimeout(() => setSignInClicked(false), 300);
   };
 
   const handleSignUpClick = () => {
     setSignUpClicked(true);
-    setTimeout(() => setSignUpClicked(false), 300); // Reset after transition
+    setTimeout(() => setSignUpClicked(false), 300); 
   };
 
   return (
-    <header className="flex items-center justify-between p-6 bg-gradient-to-r from-gray-900 via-gray-600 to-gray-300 text-white h-16 w-full fixed top-0 left-0 z-50">
+    <header className="flex items-center justify-between p-6 bg-gray-900 text-white h-16 w-full fixed top-0 left-0 z-50">
       <div className="flex items-center">
-        <h1 className="text-2xl font-extrabold">SecureArtistry</h1>
+        <h1 className="text-2xl font-bold">Secure Artistry</h1>
       </div>
       
       <div className="flex-1 mx-6">
@@ -39,11 +39,29 @@ const Header: React.FC = () => {
       </div>
       
       <div className="flex items-center space-x-6 relative group">
+        <button
+          onClick={() => alert('Explore clicked')}
+          className="bg-gray-900 text-white hover:underline transition-colors duration-300"
+        >
+          Explore
+        </button>
+        <button
+          onClick={() => alert('Pricing clicked')}
+          className="bg-gray-900 text-white hover:underline transition-colors duration-300"
+        >
+          Pricing
+        </button>
+        <button
+          onClick={() => alert('Upload clicked')}
+          className="bg-gray-900 text-white hover:underline transition-colors duration-300"
+        >
+          Upload
+        </button>
         {authOptionsVisible ? (
           <>
             <button
               onClick={handleSignInClick}
-              className={`p-3 bg-gray-800 rounded-md hover:bg-gray-700 flex items-center space-x-2 transition-transform duration-300 ${signInClicked ? 'scale-95' : ''}`}
+              className={`p-3 bg-gray-900 rounded-md hover:bg-gray-700 flex items-center space-x-2 transition-transform duration-300 ${signInClicked ? 'scale-95' : ''}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +75,7 @@ const Header: React.FC = () => {
             </button>
             <button
               onClick={handleSignUpClick}
-              className={`p-3 bg-gray-800 rounded-md hover:bg-gray-700 flex items-center space-x-2 transition-transform duration-300 ${signUpClicked ? 'scale-95' : ''}`}
+              className={`p-3 bg-gray-900 rounded-md hover:bg-gray-700 flex items-center space-x-2 transition-transform duration-300 ${signUpClicked ? 'scale-95' : ''}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +91,7 @@ const Header: React.FC = () => {
         ) : (
           <button
             onClick={handleToggleAuthOptions}
-            className="p-3 bg-gray-800 rounded-md hover:bg-gray-700 flex items-center space-x-2"
+            className="p-3 bg-gray-900 rounded-md hover:bg-gray-700 flex items-center space-x-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,12 +101,13 @@ const Header: React.FC = () => {
             >
               <path d="M5 2H19C19.5523 2 20 2.44772 20 3V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V3C4 2.44772 4.44772 2 5 2ZM9 11V8L4 12L9 16V13H15V11H9Z"></path>
             </svg>
+            <span>Sign In</span>
           </button>
         )}
         
         <button
           onClick={handleToggleSidebar}
-          className="p-3 bg-gray-600 rounded-md hover:bg-gray-500 flex items-center justify-center relative group"
+          className="p-3 bg-gray-900 rounded-md hover:bg-gray-700 flex items-center justify-center relative group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
