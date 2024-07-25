@@ -4,11 +4,13 @@
 import './App.css'
 import React from 'react';
 import Header from './header/header';
+import Footer from './footer/footer';
 
 const App: React.FC = () => {
   return (
     <div>
       <Header />
+	  <Footer />
     </div>
   );
 };

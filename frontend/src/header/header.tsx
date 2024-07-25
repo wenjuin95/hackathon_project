@@ -27,7 +27,7 @@ const Header: React.FC = () => {
   return (
     <header className="flex items-center justify-between p-6 bg-gradient-to-r from-gray-900 via-gray-600 to-gray-300 text-white h-16 w-full fixed top-0 left-0 z-50">
       <div className="flex items-center">
-        <h1 className="text-2xl font-bold">ProofOrigin</h1>
+        <h1 className="text-2xl font-extrabold">ProofOrigin</h1>
       </div>
       
       <div className="flex-1 mx-6">
