@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
-const Main: React.FC = () => {
-	const []
+// const Main: React.FC = () => {
+// 	const []
 
-	return (
+// 	return (
+		
+// 	);
+// };
 
-	);
-};
-
-export default Main
+// export default Main
