@@ -1,8 +1,7 @@
 module copyright::copyrightOwner {
     use std::string::String;
-    use sui::transfer::{Receiving};
-    const EAccessDenied: u64 = 0;
-    const AutorizedReceiveAddr: address = @0xB0B;
+    use sui::coin::{Coin};
+    use sui::sui::SUI;
 
     public struct CopyrightOwner has key, store {
         id: UID,
@@ -24,6 +23,7 @@ module copyright::copyrightOwner {
         watermarkData: u64,
         creation_date: u64, 
         price: u64, 
+        payment: Coin<SUI>,
         ctx: &mut TxContext 
         ) {
         let copyrightOwner = CopyrightOwner {
@@ -38,6 +38,11 @@ module copyright::copyrightOwner {
         };
         // transfer::public_transfer(copyrightOwner, owner);
         transfer::share_object(copyrightOwner);
+
+        //transfer payment to owner
+        transfer::public_transfer(payment, owner);
+
+
     }
 
     //owner remove copyright
@@ -53,11 +58,5 @@ module copyright::copyrightOwner {
             price: _,
         } = copyrightOwner;
         object::delete(id);
-    }
-
-    //owner receive payment from buyer
-    public fun receive_payment<T: key + store>(copyrightOwner: &mut CopyrightOwner, sent: Receiving<T>, ctx: &mut TxContext): T {
-        assert!(tx_context::sender(ctx) == AutorizedReceiveAddr, EAccessDenied);
-        transfer::public_receive(&mut copyrightOwner.id, sent)
     }
 } 
