@@ -10,7 +10,7 @@
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/style.css">
     <link rel="icon" href="public/vite.svg"> 
   </head>
 
@@ -30,10 +30,20 @@
     </nav>
     <div class="content">
       <h1>Protecting Originality with ProofSecure</h1>
-      <button id="upload-button">Upload File</button>
+      <div class="upload-container">
+        <input type="file" id="upload-button"/>
+        <label for="upload-button" class="custom-file-upload">
+          Upload File
+        </label>
+        <div class="bar">
+          <div class="progress"></div>
+        </div>
+        <div class="uploadPercentage">0%</div>
+      </div>
+      <script type="module" src="js/fileUpload.js"></script>
     </div>
     <div id="particles-js"></div>
-    <script type= "text/javascript" src="css/particles.js"></script>
-    <script type= "text/javascript" src="css/app.js"></script>
+    <script type= "text/javascript" src="js/particles.js"></script>
+    <script type= "text/javascript" src="js/app.js"></script>
   </body>
 </html>
