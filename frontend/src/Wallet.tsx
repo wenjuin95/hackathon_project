@@ -2,7 +2,7 @@ import { ConnectButton, useCurrentAccount } from '@mysten/dapp-kit';
 import '@mysten/dapp-kit/dist/index.css';
 
 
-function App() {
+function Wallet() {
   return (
     <div>
       <header>
@@ -23,4 +23,4 @@ function ConnectAccount() {
   return <div>Connected</div>
 }
 
-export default App
+export default Wallet
