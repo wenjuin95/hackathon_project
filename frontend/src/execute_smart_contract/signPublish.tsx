@@ -13,7 +13,6 @@ import '@mysten/dapp-kit/dist/index.css';
 
 const { networkConfig } = createNetworkConfig({
     testnet: { url: getFullnodeUrl('testnet') },
-    devnet: { url: getFullnodeUrl('devnet') },
   })
 const packageId = '0x72d4e3de05682d658208b1fd0496937504f19f644fec8c766282a516e7348a7b';
 const queryClient = new QueryClient()
@@ -51,7 +50,7 @@ function SignPublish( { onCreated }: { onCreated: (id: string) => void; }) {
     //create object
     function Create() {
         const trx = new Transaction();
-
+        
         trx.moveCall({
             arguments:[],
             target: `${packageId}::copyrightOwner::create`,
