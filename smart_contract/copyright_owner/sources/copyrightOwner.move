@@ -1,62 +1,37 @@
 module copyright::copyrightOwner {
     use std::string::String;
-    use sui::coin::{Coin};
-    use sui::sui::SUI;
 
-    public struct CopyrightOwner has key, store {
+    public struct CopyrightObject has key, store {
         id: UID,
-        owner: address,
         title: String,
         description: String,
-        fileHash: u64,
-        watermarkData: u64,
-        creation_date: u64,
-        price: u64,
+        timestamp: u64, //creation date
+        url: String, //url for the copyright
     }
 
     //owner create copyright
-    public fun create_copyright(
-        owner: address, 
-        title: String, 
-        description: String, 
-        fileHash: u64, 
-        watermarkData: u64,
-        creation_date: u64, 
-        price: u64, 
-        payment: Coin<SUI>,
-        ctx: &mut TxContext 
-        ) {
-        let copyrightOwner = CopyrightOwner {
+    public entry fun create_copyright(title: String, description: String, timestamp: u64, url: String, ctx: &mut TxContext)
+    {
+        let copyrightObject = CopyrightObject {
             id: object::new(ctx),
-            owner,
             title,
             description,
-            fileHash,
-            watermarkData,
-            creation_date,
-            price,
+            timestamp,
+            url,
         };
-        // transfer::public_transfer(copyrightOwner, owner);
-        transfer::share_object(copyrightOwner);
-
-        //transfer payment to owner
-        transfer::public_transfer(payment, owner);
-
-
+        let owner = tx_context::sender(ctx); //get the sign contract owner address 
+        transfer::public_transfer(copyrightObject, owner); //transfer the object to the owner
     }
 
     //owner remove copyright
-    public fun remove_copyright(copyrightOwner: CopyrightOwner) {
-        let CopyrightOwner {
+    public entry fun remove_copyright(copyrightObject: CopyrightObject) {
+        let CopyrightObject {
             id,
-            owner: _,
             title: _,
             description: _,
-            fileHash: _,
-            watermarkData: _,
-            creation_date: _,
-            price: _,
-        } = copyrightOwner;
+            timestamp: _,
+            url: _,
+        } = copyrightObject;
         object::delete(id);
     }
 } 
