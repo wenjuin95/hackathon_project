@@ -128,7 +128,22 @@ button:hover {
 input[type="file"] {
     display: none;
 }
-  
+
+.imageUpload {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Center the image and percentage vertically */
+}
+
+.imageUpload img {
+    max-height: 200px;
+    max-width: 500px;
+    object-fit: cover;
+    display: block; /* Ensure the image is displayed */
+}
+
 #particles-js {
     position: absolute;
     width: 100%;

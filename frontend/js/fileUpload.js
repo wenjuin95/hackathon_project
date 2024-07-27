@@ -24,9 +24,10 @@ const uploadPercentage = document.querySelector('.uploadPercentage');
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
   if (file) {
-    uploadFile(file);
+    uploadFile(file);                       
   }
 });
+
 
 function uploadFile(file) {
   const storageRef = ref(storage, 'uploads/' + file.name);
@@ -39,6 +40,7 @@ function uploadFile(file) {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       progressBar.style.width = progress + '%';
       uploadPercentage.textContent = Math.floor(progress) + '%';
+      console.log(`Upload is ${progress}% done`); // Debug log
     }, 
     (error) => {
       // Handle unsuccessful uploads
@@ -48,15 +50,18 @@ function uploadFile(file) {
       // Handle successful uploads on complete
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         console.log('File available at', downloadURL);
+        uploadedImage.src = downloadURL; // Set the src attribute of the img element
+        uploadedImage.style.display = 'block'; // Make the image visible
+        console.log('Image src set to:', uploadedImage.src); // Debug log
+      }).catch((error) => {
+        console.error('Failed to get download URL:', error);
       });
     }
   );
 }
+
 // Event listener for the button click
 document.getElementById('upload-button').addEventListener('click', () => {
   fileInput.click(); // Trigger file input dialog
   console.log("File input dialog triggered"); // Debug log
 });
-
-// Event listener for the file input change
-fileInput.addEventListener('change', getFile);
