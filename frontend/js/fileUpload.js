@@ -23,8 +23,6 @@ const uploadPercentage = document.querySelector('.uploadPercentage');
 // Listen for file selection
 fileInput.addEventListener('change', async (event) => {
   const file = event.target.files[0];
-  const accountAddress = 'your-account-address'; // Replace with the actual account address
-  const balance = await checkSuiBalance(accountAddress);
   uploadFile(file);                       
   console.log("File selected:", file.name); // Debug 
 });
