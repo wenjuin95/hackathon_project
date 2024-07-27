@@ -91,7 +91,7 @@ button:hover {
 *{
 	padding: 0;
 	margin: 0;
-	font-family: 'Josefin Sans', sans-serif;
+	/* font-family: 'Josefin Sans', sans-serif; */
 	box-sizing: border-box;
 }
 
@@ -125,10 +125,13 @@ button:hover {
 	}
 
 	.about-text h1{
-		color: white;
 		font-size: 80px;
-		text-transform: capitalize;
-		margin-bottom: 20px;
+		color: #fff; 
+		overflow: hidden; 
+		border-right: 0.15em solid #fff; /* Cursor effect */
+		white-space: nowrap; /* Keeps the text on a single line */
+		animation: animate 4s steps(40, end), blink-caret 0.75s step-end infinite;
+		display: inline-block;
 	}
 
 	.about-text h5{
@@ -139,16 +142,22 @@ button:hover {
 		letter-spacing: 2px;
 	}
 
-	span{
-		color: red;
-	}
-
 	.about-text p{
-		color: #fcfc;
+		color: rgba(172, 154, 249, 0.8);
 		letter-spacing: 1px;
 		line-height: 28px;
 		font-size: 18px;
 		margin-bottom: 45px;
+		text-align: justify;
+	}
+
+	.about-text li{
+		color: rgba(172, 154, 249, 0.8);
+		letter-spacing: 1px;
+		line-height: 28px;
+		font-size: 18px;
+		margin-bottom: 0px;
+		text-align: justify;
 	}
 }
 
@@ -162,3 +171,14 @@ button:hover {
 	  transform: translateY(0);
 	}
   }
+
+@keyframes animate {
+	from { width: 0; }
+	to { width: 100%; }
+	}
+
+@keyframes blink-caret {
+	from, to { border-color: transparent; }
+	50% { border-color: #fff; }
+  }
+
