@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProofSecure</title>
+
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="js/style.css">
+    <link rel="icon" href="public/vite.svg"> 
+  </head>
+  <body>
+    <nav>
+      <span class="brand">ProofSecure</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="viewmedia.html">View Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    <div id="root">
+          <script type="module" src="src/Wallet.tsx"></script>
+    </div>
+    </nav>
+    <body>
+		<div id="view-images">
+		  <h2>View Images</h2>
+		  <img id="image" style="display: none;">
+		</div>
+	  
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+		<script type= "module" src="js/viewmedia.js"></script>
+    <!-- <script type="text/javascript" src="js/particles.js"></script> -->
+    <!-- <script type="text/javascript" src="js/app.js"></script> -->
+  </body>
+</html>
