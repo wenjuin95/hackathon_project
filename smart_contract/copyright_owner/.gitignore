@@ -2,6 +2,7 @@ build
 sources/copyright_testing.txt
 sources/admin.txt
 sources/owner.txt
+sources/object.txt
 function_call.txt
 object.txt
 Move.lock
