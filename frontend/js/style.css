@@ -152,4 +152,19 @@ input[type="file"] {
     left: 0;
     z-index: 0;
 }
+
+#view-images {
+    margin-top: 20px;
+}
   
+.image-card {
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+  
+.image-card img {
+    max-width: 100px;
+    max-height: 100px;
+}

@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCkeSacH6emGscYhdK8ru1q_n4qFLaVLY",
@@ -28,7 +29,6 @@ fileInput.addEventListener('change', (event) => {
   }
 });
 
-
 function uploadFile(file) {
   const storageRef = ref(storage, 'uploads/' + file.name);
   const uploadTask = uploadBytesResumable(storageRef, file);
@@ -53,6 +53,8 @@ function uploadFile(file) {
         uploadedImage.src = downloadURL; // Set the src attribute of the img element
         uploadedImage.style.display = 'block'; // Make the image visible
         console.log('Image src set to:', uploadedImage.src); // Debug log
+        uploadedImageURLs.push(downloadURL);
+        displayImageCards();
       }).catch((error) => {
         console.error('Failed to get download URL:', error);
       });
@@ -60,8 +62,38 @@ function uploadFile(file) {
   );
 }
 
+async function fetchAndDisplayImages() {
+  const querySnapshot = await getDocs(collection(db, 'images'));
+  const imageCardsContainer = document.getElementById('image-cards-container');
+  imageCardsContainer.innerHTML = ''; // Clear existing cards
+
+  querySnapshot.forEach((doc) => {
+    const imageUrl = doc.data().url;
+    const card = document.createElement('div');
+    card.classList.add('image-card');
+    card.innerHTML = `<img src="${imageUrl}" alt="Uploaded Image">`;
+    imageCardsContainer.appendChild(card);
+  });
+}
+
+// Function to create and display image cards
+function displayImageCards() {
+  imageCardsContainer.innerHTML = ''; // Clear existing cards
+  uploadedImageURLs.forEach(url => {
+    const card = document.createElement('div');
+    card.classList.add('image-card');
+    card.innerHTML = `<img src="${url}" alt="Uploaded Image">`;
+    imageCardsContainer.appendChild(card);
+  });
+}
+
 // Event listener for the button click
 document.getElementById('upload-button').addEventListener('click', () => {
   fileInput.click(); // Trigger file input dialog
   console.log("File input dialog triggered"); // Debug log
+});
+
+document.addEventListener('DOMContentLoaded', fetchAndDisplayImages);
+document.getElementById('upload-button').addEventListener('click', () => {
+  fileInput.click();
 });
