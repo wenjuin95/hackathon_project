@@ -31,6 +31,14 @@ ReactDOM.createRoot(document.getElementById('wallet')!).render(
   </React.StrictMode>,
 )
 
+function Wallet() {
+  return (
+    <div>
+        <ConnectButton />
+    </div>
+  )
+}
+
 // function Wallet() {
 // 	const currentAccount = useCurrentAccount();
 // 	const [open, setOpen] = useState(false);
@@ -48,13 +56,6 @@ ReactDOM.createRoot(document.getElementById('wallet')!).render(
 //   )
 // }
 
-function Wallet() {
-  return (
-    <div>
-        <ConnectButton />
-    </div>
-  )
-}
 
 // function Wallet() {
 //   const account = useCurrentAccount();
@@ -70,3 +71,4 @@ function Wallet() {
 //     </div>
 //   )
 // }
+
