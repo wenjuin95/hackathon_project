@@ -73,7 +73,10 @@ function Viewwallet() {
         <h4 style={{ color: 'white' }}>not connect</h4>
       ) : (
           // <h4 style={{ color: 'white' }}>connected: {account.label}</h4>
-          <h4 style={{ color: 'white' }}>balance: ${balanceSUI}</h4>
+          <div>
+            <span style={{ color: 'white' }}>balance: $</span>
+            <span id="globalBalance" style={{ color: 'white' }}>{balanceSUI}</span>
+          </div>
       )}
     </div>
   );
