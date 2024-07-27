@@ -6,7 +6,7 @@ import {
   SuiClientProvider, 
   WalletProvider 
 } from '@mysten/dapp-kit';
-// import { useCurrentAccount } from '@mysten/dapp-kit';
+import { useCurrentAccount } from '@mysten/dapp-kit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { getFullnodeUrl } from '@mysten/sui/client';
 import '@mysten/dapp-kit/dist/index.css';
@@ -29,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('wallet')!).render(
   </React.StrictMode>,
 )
 
+<<<<<<< HEAD
 function Wallet() {
   return (
     <div>
@@ -52,18 +53,31 @@ function ConnectAccount() {
 
 export default Wallet
 =======
+=======
+>>>>>>> low
 // function Wallet() {
-//   const account = useCurrentAccount();
-//   console.log('account: ', account)
 //   return (
 //     <div>
 //         <ConnectButton />
-//       {account === null ? (
-//         <h2 style={{ color: 'white' }}>not connect</h2>
-//       ) : (
-//         <h2 style={{ color: 'white' }}>connected</h2>
-//       )}
 //     </div>
 //   )
 // }
+<<<<<<< HEAD
 >>>>>>> 9b2255f4b7adf55debc2c744945263b23bead559
+=======
+
+function Wallet() {
+  const account = useCurrentAccount();
+  console.log('account: ', account)
+  return (
+    <div>
+        <ConnectButton />
+      {account === null ? (
+        <h2 style={{ color: 'white' }}>not connect</h2>
+      ) : (
+        <h2 style={{ color: 'white' }}>connected: {account.label}</h2>
+      )}
+    </div>
+  )
+}
+>>>>>>> low
