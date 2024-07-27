@@ -1,18 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import { useState, useEffect } from 'react'
-import { 
-  ConnectButton,
-  // ConnectModal, 
-  createNetworkConfig, 
-  // SuiClientProvider, 
-  // WalletProvider 
-} from '@mysten/dapp-kit';
-import { useCurrentAccount } from '@mysten/dapp-kit';
-// import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { getFullnodeUrl, SuiClient } from '@mysten/sui/client';
+import { createNetworkConfig } from '@mysten/dapp-kit';
+import { getFullnodeUrl } from '@mysten/sui/client';
 import '@mysten/dapp-kit/dist/index.css';
 
 const firebaseConfig = {
@@ -25,10 +14,6 @@ const firebaseConfig = {
   measurementId: "G-WB2GL49FTK"
 };
 
-const { networkConfig } = createNetworkConfig({
-  testnet: { url: getFullnodeUrl('testnet') },
-  devnet: { url: getFullnodeUrl('devnet') },
-})
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
@@ -38,7 +23,8 @@ const storage = getStorage(app);
 const fileInput = document.getElementById('upload-button');
 const progressBar = document.querySelector('.progress');
 const uploadPercentage = document.querySelector('.uploadPercentage');
-await showHideUpload();
+const serviceCharge = 0;
+setTimeout(showHideUpload, 1000);
 
 // Listen for file selection
 fileInput.addEventListener('change', async (event) => {
@@ -47,16 +33,6 @@ fileInput.addEventListener('change', async (event) => {
   uploadFile(file);
   console.log("File selected:", file.name); // Debug 
 });
-
-async function ObtainBalance() {
-  const account = useCurrentAccount();
-  const suiClient = new SuiClient({ url: getFullnodeUrl('testnet') });
-  const balance = await suiClient.getBalance({ owner: account.address });
-
-  return (
-    balance
-  );
-}
 
 function uploadFile(file) {
   const storageRef = ref(storage, 'uploads/' + file.name);
@@ -95,14 +71,13 @@ document.getElementById('upload-button').addEventListener('click', () => {
   console.log("File input dialog triggered"); // Debug log
 });
 
-async function showHideUpload() {
-  const serviceCharge = 0;
-  var balance = await ObtainBalance();
+function showHideUpload() {
+  var globalBalance = Number.parseInt(document.getElementById("globalBalance").innerHTML);
 
-  if (balance >= serviceCharge) {
+  if (globalBalance >= serviceCharge) {
     uploadButton.hidden = false;
   }
   else {
-    console.log("hahahahaha");
+    insufficientBalance.hidden = false;
   }
 }
