@@ -1,21 +1,43 @@
-# hackathon_project
 
-# git cheat sheet
+<p align="center">
+  <img width="701" alt="image" src="https://github.com/user-attachments/assets/2fa4f289-51b9-4707-823e-012b50c55569">
+</p>
 
-1. git restore . - unstage all changes
-2. git branch - list your branches [ ( * ) is your current branch ]
-3. git branch [branch-name] - create a new branch
-4. git checkout [branch-name] - switch branch
-5. git merge [branch-name] - merge your current branch project with the other branch project
-6. git reset --hard [commit hash number] - it will reset to the previous project (you future project will all gone)
-7. git log - check your git commit history
-8. git fetch - to check whats update
 
-## Major thing you need to know before doing group project
-1. after git clone try to do it in your own branch the main branch as you final work / main project (means make another branch)
-2. if you want to switch to the other branch git add and git commit before switch because if you don't do that you will overwrite the project with your project
-3. try to git fetch before git pull (git pull is a combination of the git fetch and git merge)
-4. install "git graph" extention in you vscode for better visualize the git log
 
-## [UPDATE]
-1. you can do anything you want in your own branch but always git push before you turn off your pc/laptop/mac
+<h1>Bridg3 Hackathon 2024 - Vibe V </h1>
+
+CityAlert is a platform that allows users to report any incidents they observe on the road or elsewhere. Users can report public infrastructure issues such as road damage, accidents, or MRT breakdowns.
+
+### Prerequisites
+
+1. Check version
+
+```
+npm -v
+node -v
+```
+ 
+
+2. Go to sui documentation (https://docs.sui.io/guides/developer/getting-started/sui-install) to install for sui version
+   ```
+   brew install sui
+   
+3.Clone the repository
+
+	
+	https://github.com/wenjuin95/hackathon_project.git
+	
+
+4. Install dependencies
+
+	```
+	npm install vite
+	```
+
+5. In new terminal, navigate to `frontend/` and start Vite for frontend
+
+    ```
+    cd frontend
+    npm run dev
+    ```
