@@ -23,7 +23,7 @@ const storage = getStorage(app);
 const fileInput = document.getElementById('upload-button');
 const progressBar = document.querySelector('.progress');
 const uploadPercentage = document.querySelector('.uploadPercentage');
-const serviceCharge = 0;
+const serviceCharge = 1;
 setTimeout(showHideUpload, 1000);
 
 // Listen for file selection
