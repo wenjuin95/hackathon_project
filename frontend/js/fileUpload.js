@@ -1,5 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+import { createNetworkConfig } from '@mysten/dapp-kit';
+import { getFullnodeUrl } from '@mysten/sui/client';
+import '@mysten/dapp-kit/dist/index.css';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCkeSacH6emGscYhdK8ru1q_n4qFLaVLY",
@@ -15,18 +18,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
+
 // Select file input and progress bar elements
 const fileInput = document.getElementById('upload-button');
 const progressBar = document.querySelector('.progress');
 const uploadPercentage = document.querySelector('.uploadPercentage');
+const serviceCharge = 0;
+setTimeout(showHideUpload, 1000);
 
 // Listen for file selection
 fileInput.addEventListener('change', async (event) => {
   const file = event.target.files[0];
-  uploadFile(file);                       
+
+  uploadFile(file);
   console.log("File selected:", file.name); // Debug 
 });
-
 
 function uploadFile(file) {
   const storageRef = ref(storage, 'uploads/' + file.name);
@@ -64,3 +70,14 @@ document.getElementById('upload-button').addEventListener('click', () => {
   fileInput.click(); // Trigger file input dialog
   console.log("File input dialog triggered"); // Debug log
 });
+
+function showHideUpload() {
+  var globalBalance = Number.parseInt(document.getElementById("globalBalance").innerHTML);
+
+  if (globalBalance >= serviceCharge) {
+    uploadButton.hidden = false;
+  }
+  else {
+    insufficientBalance.hidden = false;
+  }
+}
