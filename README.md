@@ -7,7 +7,7 @@
 
 <h1>Bridg3 Hackathon 2024 - Vibe V </h1>
 
-CityAlert is a platform that allows users to report any incidents they observe on the road or elsewhere. Users can report public infrastructure issues such as road damage, accidents, or MRT breakdowns.
+CityAlert is a platform that allows users to report any incidents they observe on the road or elsewhere. Users can upload public infrastructure issues in image form such as road damage, accidents, or MRT breakdowns to enhance faciliate police report and raise public awareness with real-time updates.
 
 ### Prerequisites
 
