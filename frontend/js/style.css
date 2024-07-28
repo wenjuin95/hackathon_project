@@ -64,6 +64,11 @@ h1 {
     border-right: 0.15em solid #fff; /* Cursor effect */
     white-space: nowrap; /* Keeps the text on a single line */
     animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+    position: center;
+}
+
+p {
+    color: white;
 }
 
 @keyframes typing {
@@ -92,6 +97,11 @@ button:hover {
     color: white;
 }
 
+.content{
+    z-index: 1;
+    position: relative;
+    width : 100%;
+}
 .bar {
     width: 100%;
     background-color: #000000; /* Background color for the progress bar */
@@ -145,43 +155,13 @@ input[type="file"] {
     display: block; /* Ensure the image is displayed */
 }
 
-.popup {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
-}
-
-.popup-content {
-    position: relative;
-    margin: auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 700px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
+.create-button{
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #000000;
+    background-color: none;
     cursor: pointer;
 }
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 
 #particles-js {
     position: absolute;
