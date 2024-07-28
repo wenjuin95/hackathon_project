@@ -52,9 +52,16 @@ function uploadFile(file) {
         uploadedImage.src = downloadURL; // Set the src attribute of the img element
         uploadedImage.style.display = 'block'; // Make the image visible
         console.log('Image src set to:', uploadedImage.src); // Debug log
+        const p = document.createElement('p');
+                  p.textContent = `${downloadURL}`;
+                  p.style.color = 'white';
+                  gridContainer.appendChild(p);
+                   // Call the callback function to pass the downloadURL to SignPublish
+                  window.dispatchEvent(new CustomEvent('fileUploaded', { detail: downloadURL }));
       }).catch((error) => {
         console.error('Failed to get download URL:', error);
       });
+
     }
   );
 }
