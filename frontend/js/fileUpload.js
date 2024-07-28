@@ -61,6 +61,7 @@ function uploadFile(file) {
       }).catch((error) => {
         console.error('Failed to get download URL:', error);
       });
+
     }
   );
 }

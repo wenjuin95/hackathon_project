@@ -10,11 +10,12 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { getFullnodeUrl } from '@mysten/sui/client';
 import '@mysten/dapp-kit/dist/index.css';
+import { useState, useEffect,  } from 'react';
 
 const { networkConfig } = createNetworkConfig({
     testnet: { url: getFullnodeUrl('testnet') },
   })
-const packageId = '0x72d4e3de05682d658208b1fd0496937504f19f644fec8c766282a516e7348a7b';
+const packageId = '0x8704d0dfdfed19ff2f5094b556df839e64819bd1c8af00d0b9831741f35ebfc5';
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('publish')!).render(
@@ -29,8 +30,23 @@ ReactDOM.createRoot(document.getElementById('publish')!).render(
   </React.StrictMode>,
 )
 
+
+
 function SignPublish( { onCreated }: { onCreated: (id: string) => void; }) {
     const suiClient = useSuiClient()
+    const [downloadURL, setDownloadURL] = useState<string | null>(null);
+
+    useEffect(() => {
+        const handleFileUploaded = (event: CustomEvent) => {
+            setDownloadURL(event.detail);
+        };
+
+        window.addEventListener('fileUploaded', handleFileUploaded);
+
+        return () => {
+            window.removeEventListener('fileUploaded', handleFileUploaded);
+        };
+    }, []);
 
     //for signing and executing a transaction
     const { mutate: signAndExecute } = useSignAndExecuteTransaction({
@@ -49,10 +65,21 @@ function SignPublish( { onCreated }: { onCreated: (id: string) => void; }) {
 
     //create object
     function Create() {
+        if (!downloadURL) {
+            console.error('No download URL available'); //debug
+            return;
+        }
+        else
+        {
+            console.log('Download URL:', downloadURL); //debug
+        }
+
         const trx = new Transaction();
-        
+        const url = downloadURL;
+
         trx.moveCall({
-            arguments:[],
+            arguments:[trx.pure.string(url)],
+
             target: `${packageId}::copyrightOwner::create`,
         });
 
