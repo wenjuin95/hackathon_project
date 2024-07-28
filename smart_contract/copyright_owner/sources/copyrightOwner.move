@@ -1,7 +1,7 @@
 module copyright::copyrightOwner {
     use std::string::String;
 
-    public struct Admin has key, store {
+    public struct OwnerPhoto has key, store {
         id: UID,
         imgUrl: String,
     }
@@ -9,7 +9,7 @@ module copyright::copyrightOwner {
 
     public entry fun create( imgUrl: String ,ctx: &mut TxContext)
     {
-        let object = Admin {
+        let object = OwnerPhoto {
             id: object::new(ctx),
             imgUrl,
         };
