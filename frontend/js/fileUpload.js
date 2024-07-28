@@ -58,6 +58,7 @@ function uploadFile(file) {
         uploadedImage.src = downloadURL; // Set the src attribute of the img element
         uploadedImage.style.display = 'block'; // Make the image visible
         console.log('Image src set to:', uploadedImage.src); // Debug log
+        window.dispatchEvent(new CustomEvent('fileUploaded', { detail: downloadURL }));
       }).catch((error) => {
         console.error('Failed to get download URL:', error);
       });

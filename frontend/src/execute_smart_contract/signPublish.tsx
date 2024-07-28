@@ -15,7 +15,7 @@ import { useState, useEffect,  } from 'react';
 const { networkConfig } = createNetworkConfig({
     testnet: { url: getFullnodeUrl('testnet') },
   })
-const packageId = '0x8704d0dfdfed19ff2f5094b556df839e64819bd1c8af00d0b9831741f35ebfc5';
+const packageId = '0xbe86a5bd42ea194d6304bcf414ea2cf44778bf1b37f5c756c32e00dff81cbe8a';
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('publish')!).render(
